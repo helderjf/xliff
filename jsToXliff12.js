@@ -25,7 +25,7 @@ function jsToXliff12(obj, opt, cb) {
     file: []
   };
 
-  Object.keys(obj.resources).forEach((nsName) => {
+  Object.keys(obj.resources).forEach(function(nsName) {
     const f = {
       $: {
         original: nsName,
@@ -39,7 +39,7 @@ function jsToXliff12(obj, opt, cb) {
     };
     xmlJs.file.push(f);
 
-    Object.keys(obj.resources[nsName]).forEach((k) => {
+    Object.keys(obj.resources[nsName]).forEach(function(k) {
       const u = {
         $: {
           id: k

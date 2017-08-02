@@ -10,11 +10,11 @@ function xliff12ToJs(str, cb) {
     resources: {}
   };
 
-  const extractValue = (value) => {
+  const extractValue = function (value) {
     return typeof value !== 'string' ? value['_'] : value;
   };
 
-  parser.parseString(str, (err, data) => {
+  parser.parseString(str, function (err, data) {
     if (err) return cb(err);
 
     const srcLang = data.xliff.file[0].$['source-language'];
@@ -23,12 +23,12 @@ function xliff12ToJs(str, cb) {
     result.sourceLanguage = srcLang;
     result.targetLanguage = trgLang;
 
-    data.xliff.file.forEach((f) => {
+    data.xliff.file.forEach(function (f) {
       const namespace = f.$.original;
       result.resources[namespace] = {};
 
       const entries = f.body[0]['trans-unit'];
-      entries.forEach((entry) => {
+      entries.forEach(function (entry) {
         const key = entry.$.id;
         result.resources[namespace][key] = {
           source: '',
